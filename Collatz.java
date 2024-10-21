@@ -11,7 +11,7 @@ public class Collatz {
            {
                n = n / 2;
            }
-           else if (n % 2 == 1)
+           else
            {
                n = (n * 3) + 1;
            }
