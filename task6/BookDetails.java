@@ -2,8 +2,6 @@ package task6;
 
 import java.util.ArrayList;
 
-
-
 class Author
 {
     private String name;
@@ -14,6 +12,9 @@ class Author
         this.name=name;
         this.age=age;
     }
+
+
+
     public String putName()
     {
         return name;
@@ -43,11 +44,9 @@ public class BookDetails {
     {
         System.out.println("books by author above age:");
 
-        for (int i = 0; i < book.length; i++)
-        {
-            if (book[i].author.putAge()>age)
-            {
-                System.out.println(book[i].title);
+        for (Book value : book) {
+            if (value.author.putAge() > age) {
+                System.out.println(value.title);
             }
         }
 
