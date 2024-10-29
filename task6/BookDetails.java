@@ -1,6 +1,7 @@
 package task6;
 
 import java.util.ArrayList;
+import java.util.List;
 
 class Author
 {
@@ -32,53 +33,65 @@ class Book
     String title;
     Author author;
 
-    Book(int id,String title)
+    Book(int id,String title,Author author)
     {
         this.id=id;
         this.title=title;
+        this.author=author;
     }
 }
 
 public class BookDetails {
-    static void filter(int age,Book book[])
+    static void filter(int age,List<Book> book)
     {
         System.out.println("books by author above age:");
 
-        for (Book value : book) {
-            if (value.author.putAge() > age) {
-                System.out.println(value.title);
+        for (Book bk:book)
+        {
+            if(bk.author.putAge()>age)
+            {
+                System.out.println(bk.author.putName());
             }
         }
 
+
     }
-    public static int getCount(int a, int b, Book books[])
+    public static int getCount(int a, int b, List<Book> books)
     {
         int count=0;
-        for (int i = 0; i < books.length; i++)
+        for (Book bk :books)
         {
-            if (books[i].author.putAge()>a && books[i].author.putAge()<b)
-            {
-                count++;
-            }
+
+                if (bk.author.putAge() > a && bk.author.putAge() < b)
+                {
+                    count++;
+                }
+
+
         }
-        return count;
+        return count ;
     }
 
     public static void main(String[] args) {
 
-        Book b1= new Book(1,"Java Programming");
-        b1.author= new Author("Alice Smith",34);
 
-        Book b2= new Book(2,"Python Basics");
-        b2.author=new Author("Bob Jones",45);
+        Author author= new Author("Alice Smith",34);
 
-        Book books[]=new Book[2];
-        books[0]=b1;
-        books[1]=b2;
+        Book b1= new Book(1,"Java Programming",author);
+
+        Author author1=new Author("Bob Jones",45);
+
+        Book b2= new Book(2,"Python Basics",author1);
+
+        List<Book> bookList=new ArrayList<>();
+        bookList.add(b1);
+        bookList.add(b2);
 
 
-        BookDetails.filter(40,books);
-        int count= BookDetails.getCount(30,40,books);
+
+
+        filter(40,bookList);
+        int count= getCount(30,40,bookList);
         System.out.println("Books by author btw 30 and 40 : "+count);
 
     }
