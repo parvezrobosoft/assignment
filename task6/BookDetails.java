@@ -2,6 +2,8 @@ package task6;
 
 import java.util.ArrayList;
 
+
+
 class Author
 {
     private String name;
@@ -37,6 +39,32 @@ class Book
 }
 
 public class BookDetails {
+    static void filter(int age,Book book[])
+    {
+        System.out.println("books by author above age:");
+
+        for (int i = 0; i < book.length; i++)
+        {
+            if (book[i].author.putAge()>age)
+            {
+                System.out.println(book[i].title);
+            }
+        }
+
+    }
+    public static int getCount(int a, int b, Book books[])
+    {
+        int count=0;
+        for (int i = 0; i < books.length; i++)
+        {
+            if (books[i].author.putAge()>a && books[i].author.putAge()<b)
+            {
+                count++;
+            }
+        }
+        return count;
+    }
+
     public static void main(String[] args) {
 
         Book b1= new Book(1,"Java Programming");
@@ -50,24 +78,10 @@ public class BookDetails {
         books[1]=b2;
 
 
-        System.out.println("books by author above age:");
-        for (int i = 0; i < books.length; i++)
-        {
-            if (books[i].author.putAge()>40)
-            {
-                System.out.println(books[i].title);
-            }
-        }
-
-        int count=0;
-        for (int i = 0; i < books.length; i++)
-        {
-            if (books[i].author.putAge()>30 && books[i].author.putAge()<40)
-            {
-                count++;
-            }
-        }
+        BookDetails.filter(40,books);
+        int count= BookDetails.getCount(30,40,books);
         System.out.println("Books by author btw 30 and 40 : "+count);
 
     }
 }
+
