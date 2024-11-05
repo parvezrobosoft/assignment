@@ -10,10 +10,12 @@ public class GradeComparator {
 
         Collections.sort(studentList);
 
-        for (Student student : studentList)
-        {
-        System.out.println(student);
-        }
+        studentList.forEach(System.out::println);
+
+//        for (Student student : studentList)
+//        {
+//        System.out.println(student);
+//        }
 
 
     }
